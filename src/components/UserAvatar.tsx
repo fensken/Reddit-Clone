@@ -22,10 +22,10 @@ const UserAvatar: FC<UserAvatarProps> = ({ user, ...props }) => {
 				</div>
 			) : (
 				<AvatarFallback>
-                    <span className="sr-only">
-                        <Icons.user className="w-4 h-4" />
-                    </span>
-                </AvatarFallback>
+					<span className="sr-only">
+						<Icons.user className="w-4 h-4" />
+					</span>
+				</AvatarFallback>
 			)}
 		</Avatar>
 	);

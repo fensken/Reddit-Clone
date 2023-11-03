@@ -28,7 +28,7 @@ export const authOptions: NextAuthOptions = {
 				session.user.username = token.username;
 			}
 
-			return session
+			return session;
 		},
 
 		async jwt({ token, user }) {
@@ -62,10 +62,10 @@ export const authOptions: NextAuthOptions = {
 				username: dbUser.username,
 			};
 		},
-		redirect(){
-            return "/"
-        }
+		redirect() {
+			return "/";
+		},
 	},
 };
 
-export const getAuthSession = () => getServerSession(authOptions)
+export const getAuthSession = () => getServerSession(authOptions);

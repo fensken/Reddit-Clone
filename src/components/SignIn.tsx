@@ -14,7 +14,7 @@ const SignIn = () => {
 				</p>
 
 				{/* sign in form */}
-                <UserAuthForm />
+				<UserAuthForm />
 
 				<p className="px-8 text-sm text-center text-zinc-700">
 					New to Breddit?{" "}

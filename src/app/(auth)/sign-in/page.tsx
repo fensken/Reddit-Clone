@@ -19,7 +19,7 @@ const page: FC = () => {
 					<ChevronLeft className="w-4 h-4 mr-2" /> Home
 				</Link>
 
-                <SignIn />
+				<SignIn />
 			</div>
 		</div>
 	);
