@@ -53,15 +53,15 @@ const page: FC = () => {
 			});
 		},
 		onSuccess: (data) => {
-			toast({
+			setTimeout(() => {
+				router.push(`r/${data}`);
+			}, 1500);
+
+			return toast({
 				title: `r/${data} subreddit successfully created.`,
 				variant: "default",
 				className: "bg-green-200",
 			});
-
-			setTimeout(() => {
-				router.push(`r/${data}`);
-			}, 1500);
 		},
 	});
 
