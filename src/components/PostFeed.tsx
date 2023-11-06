@@ -50,6 +50,7 @@ const PostFeed: FC<PostFeedProps> = ({ initialPosts, subredditName }) => {
 					(acc: number, vote: { type: string }) => {
 						if (vote.type === "UP") return acc + 1;
 						if (vote.type === "DOWN") return acc - 1;
+
 						return acc;
 					},
 					0
