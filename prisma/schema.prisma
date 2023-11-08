@@ -5,7 +5,7 @@ generator client {
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
-  // relationMode = "prisma"    //default is foreign-key relation
+  // relationMode = "prisma" //default is foreign key
 }
 
 enum VoteType {
@@ -70,7 +70,7 @@ model Subreddit {
   Creator     User?          @relation("CreatedBy", fields: [creatorId], references: [id])
   subscribers Subscription[]
 
-  @@index([creatorId])
+  @@index([name])
 }
 
 model Subscription {
@@ -106,7 +106,7 @@ model Comment {
   postId    String
 
   replyToId String?
-  replyTo   Comment?  @relation("ReplyTo", fields: [replyToId], references: [id], onDelete: Restrict, onUpdate: Restrict)
+  replyTo   Comment?  @relation("ReplyTo", fields: [replyToId], references: [id], onDelete: NoAction, onUpdate: NoAction)
   replies   Comment[] @relation("ReplyTo")
 
   votes     CommentVote[]
