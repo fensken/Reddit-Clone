@@ -22,12 +22,6 @@ export async function GET(req: Request, res: Response) {
     followedCommunitiesIds = followedCommunities.map(
       ({ subreddit }) => subreddit.id
     );
-
-    // console.log(
-    //   followedCommunitiesIds,
-    //   "followedCommunitiesIdsfollowedCommunitiesIdsfollowedCommunitiesIds in the mud",
-    //   session.user.name
-    // );
   }
 
   try {
