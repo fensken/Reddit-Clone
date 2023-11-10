@@ -43,7 +43,7 @@ const SubRedditPostPage = async ({ params }: SubRedditPostPageProps) => {
 
   return (
     <div>
-      <div className="flex flex-col items-center justify-between h-full sm:flex-row sm:items-start">
+      <div className="flex items-start justify-between h-full sm:flex-row sm:items-start">
         <Suspense fallback={<PostVoteShell />}>
           {/* @ts-expect-error server component */}
           <PostVoteServer

@@ -77,7 +77,7 @@ const PostVoteClient: FC<PostVoteClientProps> = ({
   });
 
   return (
-    <div className="flex gap-4 pb-4 pr-6 sm:flex-col sm:gap-0 sm:w-20 sm:pb-0">
+    <div className="flex flex-col gap-4 pb-4 pr-6 sm:gap-0 sm:w-20 sm:pb-0">
       <Button
         onClick={() => vote("UP")}
         size="sm"
