@@ -1,15 +1,15 @@
-import { Suspense } from "react";
-import { notFound } from "next/navigation";
-import { ArrowBigDown, ArrowBigUp, Loader2 } from "lucide-react";
-import { Post, User, Vote } from "@prisma/client";
-import { db } from "@/lib/db";
-import { redis } from "@/lib/redis";
-import { formatTimeToNow } from "@/lib/utils";
-import { CachedPost } from "@/types/redis";
 import CommentsSection from "@/components/CommentsSection";
 import EditorOutput from "@/components/EditorOutput";
 import PostVoteServer from "@/components/post-vote/PostVoteServer";
 import { buttonVariants } from "@/components/ui/Button";
+import { db } from "@/lib/db";
+import { redis } from "@/lib/redis";
+import { formatTimeToNow } from "@/lib/utils";
+import { CachedPost } from "@/types/redis";
+import { Post, User, Vote } from "@prisma/client";
+import { ArrowBigDown, ArrowBigUp, Loader2 } from "lucide-react";
+import { notFound } from "next/navigation";
+import { Suspense } from "react";
 
 interface SubRedditPostPageProps {
   params: {
@@ -66,6 +66,7 @@ const SubRedditPostPage = async ({ params }: SubRedditPostPageProps) => {
             Posted by u/{post?.author.username ?? cachedPost.authorUsername}{" "}
             {formatTimeToNow(new Date(post?.createdAt ?? cachedPost.createdAt))}
           </p>
+
           <h1 className="py-2 text-xl font-semibold leading-6 text-gray-900">
             {post?.title ?? cachedPost.title}
           </h1>
