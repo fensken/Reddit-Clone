@@ -1,15 +1,15 @@
 "use client";
 
-import { INFINITE_SCROLLING_PAGINATION_RESULTS } from "@/config";
-import { ExtendedPost } from "@/types/db";
-import { useIntersection } from "@mantine/hooks";
+import { FC, useEffect, useRef } from "react";
+import { useSession } from "next-auth/react";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import axios from "axios";
+import { useIntersection } from "@mantine/hooks";
 import { Loader2 } from "lucide-react";
-import { FC, useEffect, useRef } from "react";
-import Post from "./Post";
-import { useSession } from "next-auth/react";
 import { Vote } from "@prisma/client";
+import { INFINITE_SCROLLING_PAGINATION_RESULTS } from "@/config";
+import { ExtendedPost } from "@/types/db";
+import Post from "./Post";
 
 interface PostFeedProps {
   initialPosts: ExtendedPost[];

@@ -1,5 +1,5 @@
-import { Post, Vote, VoteType } from "@prisma/client";
 import { notFound } from "next/navigation";
+import { Post, Vote, VoteType } from "@prisma/client";
 import PostVoteClient from "./PostVoteClient";
 import { getAuthSession } from "@/lib/auth";
 

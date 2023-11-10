@@ -1,15 +1,15 @@
 "use client";
 
-import { useCustomToast } from "@/hooks/use-custom-toast";
-import { toast } from "@/hooks/use-toast";
-import { cn } from "@/lib/utils";
-import { CommentVoteRequest } from "@/lib/validators/vote";
-import { usePrevious } from "@mantine/hooks";
-import { CommentVote, VoteType } from "@prisma/client";
+import { FC, useState } from "react";
 import { useMutation } from "@tanstack/react-query";
 import axios, { AxiosError } from "axios";
+import { usePrevious } from "@mantine/hooks";
 import { ArrowBigDown, ArrowBigUp } from "lucide-react";
-import { FC, useState } from "react";
+import { CommentVote, VoteType } from "@prisma/client";
+import { cn } from "@/lib/utils";
+import { CommentVoteRequest } from "@/lib/validators/vote";
+import { useCustomToast } from "@/hooks/use-custom-toast";
+import { toast } from "@/hooks/use-toast";
 import { Button } from "./ui/Button";
 
 type PartialVote = Pick<CommentVote, "type">;
@@ -29,8 +29,6 @@ const CommentVote: FC<CommentVoteProps> = ({
   const [votesAmt, setVotesAmt] = useState<number>(initialVoteAmt);
   const [currentVote, setCurrentVote] = useState(initialVote);
   const prevVote = usePrevious(currentVote);
-
-  console.log(currentVote);
 
   const { mutate: vote } = useMutation({
     mutationFn: async (voteType: VoteType) => {

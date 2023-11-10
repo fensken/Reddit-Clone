@@ -1,7 +1,7 @@
-import { formatTimeToNow } from "@/lib/utils";
+import { FC, useRef } from "react";
 import { Post, User, Vote } from "@prisma/client";
 import { MessageSquare } from "lucide-react";
-import { FC, useRef } from "react";
+import { formatTimeToNow } from "@/lib/utils";
 import EditorOutput from "./EditorOutput";
 import PostVoteClient from "./post-vote/PostVoteClient";
 
@@ -51,7 +51,7 @@ const Post: FC<PostProps> = ({
                 <span className="px-1">•</span>
               </>
             ) : null}
-            <span>Posted by u/{post.author.name}</span>{" "}
+            <span>Posted by u/{post.author.username}</span>{" "}
             {formatTimeToNow(new Date(post.createdAt))}
           </div>
 

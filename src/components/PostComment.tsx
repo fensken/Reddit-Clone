@@ -1,20 +1,20 @@
 "use client";
 
 import { FC, useRef, useState } from "react";
-import UserAvatar from "./UserAvatar";
-import { Comment, CommentVote, User } from "@prisma/client";
-import { formatTimeToNow } from "@/lib/utils";
-import CommentVotes from "./CommentVotes";
-import { Button } from "./ui/Button";
-import { MessageSquare } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
+import { useMutation } from "@tanstack/react-query";
+import axios from "axios";
+import { MessageSquare } from "lucide-react";
+import { Comment, CommentVote, User } from "@prisma/client";
+import { formatTimeToNow } from "@/lib/utils";
+import { CommentRequest } from "@/lib/validators/comment";
+import { toast } from "@/hooks/use-toast";
+import CommentVotes from "./CommentVotes";
+import UserAvatar from "./UserAvatar";
+import { Button } from "./ui/Button";
 import { Label } from "./ui/Label";
 import { Textarea } from "./ui/Textarea";
-import { useMutation } from "@tanstack/react-query";
-import { CommentRequest } from "@/lib/validators/comment";
-import axios from "axios";
-import { toast } from "@/hooks/use-toast";
 
 type ExtendedComment = Comment & {
   votes: CommentVote[];
@@ -39,8 +39,6 @@ const PostComment: FC<PostCommentProps> = ({
   const { data: session } = useSession();
   const [isReplying, setIsReplying] = useState<boolean>(false);
   const [input, setInput] = useState<string>("");
-
-  console.log(votesAmt, currentVote);
 
   const { mutate: createComment, isLoading } = useMutation({
     mutationFn: async ({ postId, text, replyToId }: CommentRequest) => {

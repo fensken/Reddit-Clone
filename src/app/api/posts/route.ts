@@ -1,8 +1,8 @@
-import { db } from "@/lib/db";
 import { getServerSession } from "next-auth";
 import { z } from "zod";
+import { db } from "@/lib/db";
 
-export async function GET(req: Request, res: Response) {
+export async function GET(req: Request) {
   const url = new URL(req.url);
 
   const session = await getServerSession();

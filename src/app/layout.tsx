@@ -1,13 +1,14 @@
+import { GeistSans } from "geist/font";
+import { cn } from "@/lib/utils";
 import Navbar from "@/components/Navbar";
 import Providers from "@/components/Providers";
 import { Toaster } from "@/components/ui/Toaster";
-import { cn } from "@/lib/utils";
 import "@/styles/globals.css";
-import { GeistSans } from "geist/font";
 
 export const metadata = {
-  title: "Reddit Clone",
-  description: "A Reddit clone built with Next.js and TypeScript.",
+  title: "Threddit",
+  description:
+    "A Reddit clone names Threddit built with Next.js and TypeScript.",
 };
 
 export default function RootLayout({

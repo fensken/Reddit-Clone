@@ -1,9 +1,12 @@
+import Link from "next/link";
+import { getServerSession } from "next-auth";
+import { HomeIcon } from "lucide-react";
 import CustomFeed from "@/components/CustomFeed";
 import GeneralFeed from "@/components/GeneralFeed";
 import { buttonVariants } from "@/components/ui/Button";
-import { HomeIcon } from "lucide-react";
-import { getServerSession } from "next-auth";
-import Link from "next/link";
+
+export const dynamic = "force-dynamic";
+export const fetchCache = "force-no-store";
 
 export default async function Home() {
   const session = await getServerSession();
@@ -27,8 +30,8 @@ export default async function Home() {
           <div className="px-6 py-4 -my-3 text-sm leading-6 divide-y divide-gray-100">
             <div className="flex justify-between py-3 gap-x-4">
               <p className="text-zinc-500">
-                Your personal Reddit-Clone homepage. Come here to check in with
-                your favorite communities.
+                Your personal Threddit homepage. Come here to check in with your
+                favorite communities.
               </p>
             </div>
 

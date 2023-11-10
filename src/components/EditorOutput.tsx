@@ -1,8 +1,8 @@
 "use client";
 
+import { FC } from "react";
 import dynamic from "next/dynamic";
 import Image from "next/image";
-import { FC } from "react";
 
 const Output = dynamic(
   async () => (await import("editorjs-react-renderer")).default,
@@ -29,7 +29,7 @@ const renderers = {
 
 const EditorOutput: FC<EditorOutputProps> = ({ content }) => {
   return (
-    // @ts-expect-error
+    // @ts-ignore
     <Output
       data={content}
       style={style}

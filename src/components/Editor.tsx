@@ -1,16 +1,16 @@
 "use client";
 
 import { FC, useCallback, useEffect, useRef, useState } from "react";
-import TextareaAutosize from "react-textarea-autosize";
-import { useForm } from "react-hook-form";
-import { PostCreationRequest, PostValidator } from "@/lib/validators/post";
-import { zodResolver } from "@hookform/resolvers/zod";
-import type EditorJS from "@editorjs/editorjs";
-import { uploadFiles } from "@/lib/uploadthing";
-import { toast } from "@/hooks/use-toast";
+import { usePathname, useRouter } from "next/navigation";
 import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
-import { usePathname, useRouter } from "next/navigation";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import TextareaAutosize from "react-textarea-autosize";
+import type EditorJS from "@editorjs/editorjs";
+import { PostCreationRequest, PostValidator } from "@/lib/validators/post";
+import { uploadFiles } from "@/lib/uploadthing";
+import { toast } from "@/hooks/use-toast";
 
 interface EditorProps {
   subredditId: string;
