@@ -26,7 +26,11 @@ const MiniCreatePost: FC<MiniCreatePostProps> = ({ session }) => {
             }}
           />
 
-          <span className="absolute bottom-0 right-0 w-3 h-3 bg-green-500 rounded-full outline outline-white outline-2 "></span>
+          <span
+            className={`absolute bottom-0 right-0 w-3 bg-green-500 h-3 rounded-full outline outline-white outline-2 ${
+              session?.user ? "block" : "hidden"
+            }`}
+          ></span>
         </div>
 
         <Input
