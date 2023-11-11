@@ -31,7 +31,7 @@ const UserNameForm: FC<UserNameFormProps> = ({ user }) => {
   const {
     handleSubmit,
     register,
-    formState: { errors },
+    formState: { errors, isDirty },
   } = useForm<UsernameRequest>({
     resolver: zodResolver(UsernameValidator),
     defaultValues: {
@@ -77,7 +77,15 @@ const UserNameForm: FC<UserNameFormProps> = ({ user }) => {
   });
 
   return (
-    <form onSubmit={handleSubmit((e) => updateUsername(e))}>
+    <form
+      onSubmit={handleSubmit((e) => {
+        if (e.name === user.username) {
+          return null;
+        }
+
+        return updateUsername(e);
+      })}
+    >
       <Card>
         <CardHeader>
           <CardTitle>Your username</CardTitle>
@@ -109,8 +117,8 @@ const UserNameForm: FC<UserNameFormProps> = ({ user }) => {
         </CardContent>
 
         <CardFooter>
-          <Button type="submit" isLoading={isLoading}>
-            Change name
+          <Button type="submit" disabled={!isDirty} isLoading={isLoading}>
+            Change username
           </Button>
         </CardFooter>
       </Card>

@@ -30,12 +30,12 @@ const Post: FC<PostProps> = ({
   return (
     <div className="bg-white shadow rounded-m">
       <div className="flex justify-between px-6 py-4">
-        {/* post votes  */}
+        {/* post votes 
         <PostVoteClient
           postId={post.id}
           initialVote={currentVote?.type}
           initialVoteAmt={votesAmt}
-        />
+        /> */}
 
         <div className="flex-1 w-0 ">
           <div className="mt-1 text-xs text-gray-500 max-h-40">
@@ -74,13 +74,20 @@ const Post: FC<PostProps> = ({
         </div>
       </div>
 
-      <div className="z-20 p-4 text-sm bg-gray-50 sm:px-6">
+      <div className="z-20 flex justify-between p-4 text-sm bg-gray-50 sm:px-6">
         <a
           href={`/r/${subredditName}/post/${post.id}`}
           className="flex items-center gap-2 w-fit"
         >
           <MessageSquare className="w-4 h-4" /> {commentAmt} comments
         </a>
+
+        {/* post votes  */}
+        <PostVoteClient
+          postId={post.id}
+          initialVote={currentVote?.type}
+          initialVoteAmt={votesAmt}
+        />
       </div>
     </div>
   );

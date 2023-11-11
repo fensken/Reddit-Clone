@@ -70,7 +70,12 @@ const Layout = async ({
           {/* info sidebar */}
           <div className="order-first overflow-hidden border border-gray-200 rounded-lg md:block h-fit md:order-last">
             <div className="px-6 py-4">
-              <p className="py-3 font-semibold">About r/{subreddit.name}</p>
+              <p className="py-3 font-semibold">
+                About{" "}
+                <Link href={`/r/${subreddit.name}`} className="underline">
+                  r/{subreddit.name}
+                </Link>
+              </p>
             </div>
 
             <dl className="px-6 py-4 text-sm leading-6 bg-white divide-y divide-gray-100">

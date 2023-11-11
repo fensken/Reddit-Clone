@@ -32,7 +32,7 @@ const SearchBar: FC<SearchBarProps> = ({}) => {
 
   const request = debounce(async () => {
     refetch();
-  }, 300);
+  }, 200);
 
   const debounceRequest = useCallback(() => {
     request();

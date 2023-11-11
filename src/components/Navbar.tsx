@@ -14,7 +14,7 @@ const Navbar = async () => {
       <div className="container flex items-center justify-between h-full gap-2 mx-auto max-w-7xl">
         {/* {logo} */}
         <Link href={"/"} className="flex items-center">
-          <Icons.logo className="w-15 h-15 sm:h-10 sm:w-10" />
+          <Icons.logo className="w-15 h-15" />
 
           <p className="hidden font-medium text-md text-zinc-700 md:block">
             Threddit
