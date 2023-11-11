@@ -40,7 +40,7 @@ const page = async ({ params }: PageProps) => {
 
   return (
     <>
-      <h1 className="hidden text-3xl font-bold md:block h-14">
+      <h1 className="hidden text-3xl font-bold md:text-4xl md:block h-14">
         r/{subreddit.name}
       </h1>
 

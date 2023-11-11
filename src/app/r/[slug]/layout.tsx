@@ -55,19 +55,17 @@ const Layout = async ({
   });
 
   return (
-    <div className="h-full pt-12 mx-auto sm:container max-w-7xl">
+    <div className="h-full mx-auto sm:container sm:px-0 max-w-7xl">
       <div>
         <h1 className="block text-3xl font-bold md:hidden h-14">
           r/{subreddit.name}
         </h1>
 
-        {/* TODO: Button to take us back */}
-
-        <div className="grid grid-cols-1 py-6 md:grid-cols-3 gap-y-4 md:gap-x-4">
+        <div className="grid grid-cols-1 pb-6 md:grid-cols-3 gap-y-4 md:gap-x-4">
           <div className="flex flex-col col-span-2 space-y-6">{children}</div>
 
           {/* info sidebar */}
-          <div className="order-first overflow-hidden border border-gray-200 rounded-lg md:block h-fit md:order-last">
+          <div className="static order-first overflow-hidden border border-gray-200 rounded-lg md:sticky md:top-20 md:block h-fit md:order-last">
             <div className="px-6 py-4">
               <p className="py-3 font-semibold">
                 About{" "}
