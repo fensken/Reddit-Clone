@@ -91,7 +91,7 @@ const PostVoteClient: FC<PostVoteClientProps> = ({
         />
       </Button>
 
-      <p className="py-2 text-sm font-medium text-center text-zinc-900">
+      <p className="py-2 text-sm font-medium text-center min-w-3 text-zinc-900">
         {votesAmt}
       </p>
 
