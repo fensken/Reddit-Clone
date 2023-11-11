@@ -9,6 +9,7 @@ import { toast } from "@/hooks/use-toast";
 import { Label } from "./ui/Label";
 import { Textarea } from "./ui/Textarea";
 import { Button } from "./ui/Button";
+import { useSession } from "next-auth/react";
 
 interface CreateCommentsProps {
   postId: string;
@@ -17,6 +18,7 @@ interface CreateCommentsProps {
 
 const CreateComments: FC<CreateCommentsProps> = ({ postId, replyToId }) => {
   const [input, setInput] = useState<string>("");
+  const session = useSession();
   const router = useRouter();
 
   const { mutate: createComment, isLoading } = useMutation({
@@ -69,7 +71,7 @@ const CreateComments: FC<CreateCommentsProps> = ({ postId, replyToId }) => {
         <div className="flex justify-end mt-2">
           <Button
             isLoading={isLoading}
-            disabled={input.length === 0}
+            disabled={input.length === 0 || session.data === null}
             onClick={() => createComment({ postId, text: input, replyToId })}
           >
             Post

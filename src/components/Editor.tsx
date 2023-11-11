@@ -11,6 +11,7 @@ import type EditorJS from "@editorjs/editorjs";
 import { PostCreationRequest, PostValidator } from "@/lib/validators/post";
 import { uploadFiles } from "@/lib/uploadthing";
 import { toast } from "@/hooks/use-toast";
+import { Button } from "./ui/Button";
 
 interface EditorProps {
   subredditId: string;
@@ -20,7 +21,7 @@ const Editor: FC<EditorProps> = ({ subredditId }) => {
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isDirty },
   } = useForm<PostCreationRequest>({
     resolver: zodResolver(PostValidator),
     defaultValues: {
@@ -128,7 +129,7 @@ const Editor: FC<EditorProps> = ({ subredditId }) => {
     }
   }, [isMounted, initializeEditor]);
 
-  const { mutate: createPost } = useMutation({
+  const { mutate: createPost, isLoading } = useMutation({
     mutationFn: async ({
       title,
       content,
@@ -182,29 +183,43 @@ const Editor: FC<EditorProps> = ({ subredditId }) => {
   const { ref: titleRef, ...rest } = register("title");
 
   return (
-    <div className="w-full p-4 border rounded-lg bg-zinc-50 border-zinc-200">
-      <form
-        id="subreddit-post-form"
-        className="w-full"
-        onSubmit={handleSubmit(onSubmit)}
-      >
-        <div className="prose prose-stone dark:prose-invert">
-          <TextareaAutosize
-            ref={(e) => {
-              titleRef(e);
+    <>
+      <div className="w-full p-4 border rounded-lg bg-zinc-50 border-zinc-200">
+        <form
+          id="subreddit-post-form"
+          className="w-full"
+          onSubmit={handleSubmit(onSubmit)}
+        >
+          <div className="prose prose-stone dark:prose-invert">
+            <TextareaAutosize
+              ref={(e) => {
+                titleRef(e);
 
-              //@ts-ignore
-              _titleRef.current = e;
-            }}
-            {...rest}
-            placeholder="Title"
-            className="w-full overflow-hidden text-4xl font-bold bg-transparent appearance-none resize-none focus:outline-transparent"
-          />
+                //@ts-ignore
+                _titleRef.current = e;
+              }}
+              {...rest}
+              placeholder="Title*"
+              className="w-full overflow-hidden text-4xl font-bold bg-transparent appearance-none resize-none focus:outline-transparent"
+            />
 
-          <div id="editor" className="min-h-[200px]"></div>
-        </div>
-      </form>
-    </div>
+            <div id="editor" className="min-h-[200px]"></div>
+          </div>
+        </form>
+      </div>
+
+      <div className="flex justify-end w-full">
+        <Button
+          type="submit"
+          isLoading={isLoading}
+          disabled={!isDirty || isLoading}
+          className="w=full"
+          form="subreddit-post-form"
+        >
+          Post
+        </Button>
+      </div>
+    </>
   );
 };
 

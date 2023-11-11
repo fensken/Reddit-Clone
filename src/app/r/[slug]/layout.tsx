@@ -57,11 +57,10 @@ const Layout = async ({
   return (
     <div className="h-full pt-12 mx-auto sm:container max-w-7xl">
       <div>
-        <Link href={`/r/${subreddit.name}`}>
-          <h1 className="block text-3xl font-bold md:hidden h-14">
-            r/{subreddit.name}
-          </h1>
-        </Link>
+        <h1 className="block text-3xl font-bold md:hidden h-14">
+          r/{subreddit.name}
+        </h1>
+
         {/* TODO: Button to take us back */}
 
         <div className="grid grid-cols-1 py-6 md:grid-cols-3 gap-y-4 md:gap-x-4">
