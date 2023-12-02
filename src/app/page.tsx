@@ -1,6 +1,6 @@
 import Link from "next/link";
-import { getServerSession } from "next-auth";
 import { HomeIcon } from "lucide-react";
+import { getAuthSession } from "@/lib/auth";
 import CustomFeed from "@/components/CustomFeed";
 import GeneralFeed from "@/components/GeneralFeed";
 import { buttonVariants } from "@/components/ui/Button";
@@ -9,7 +9,8 @@ export const dynamic = "force-dynamic";
 export const fetchCache = "force-no-store";
 
 export default async function Home() {
-  const session = await getServerSession();
+  const session = await getAuthSession();
+
   return (
     <>
       <h1 className="text-3xl font-bold md:text-4xl">Your feed</h1>
