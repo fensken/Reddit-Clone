@@ -8,7 +8,7 @@ import "@/styles/globals.css";
 export const metadata = {
   title: "Threddit",
   description:
-    "A Reddit clone names Threddit built with Next.js and TypeScript.",
+    "A Reddit clone named Threddit built with Next.js and TypeScript.",
 };
 
 export default function RootLayout({
