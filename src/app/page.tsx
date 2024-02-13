@@ -5,8 +5,8 @@ import CustomFeed from "@/components/CustomFeed";
 import GeneralFeed from "@/components/GeneralFeed";
 import { buttonVariants } from "@/components/ui/Button";
 
-export const dynamic = "force-dynamic";
-export const fetchCache = "force-no-store";
+// export const dynamic = "force-dynamic";
+// export const fetchCache = "force-no-store";
 
 export default async function Home() {
   const session = await getAuthSession();
